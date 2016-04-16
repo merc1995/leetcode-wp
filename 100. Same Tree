@@ -1,0 +1,25 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
+    if(p==NULL&&q==NULL) return true;
+    else if(p!=NULL&&q!=NULL){
+        if(p->val!=q->val) return false;
+    bool l=true,r=true;
+         l= isSameTree(p->left,q->left);
+         r= isSameTree(p->right,q->right);
+    return l&r;
+    }
+    else return false;
+}
+
+/*
+  好 挫 的代码！！！！！
+  判断两个二叉树是否全等，
+  左、右子树是否为空，递归判断一下。
+*/
