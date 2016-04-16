@@ -16,4 +16,14 @@ public:
   直接排序判断啦。。。
   
   当然也想到了用hashtable，懒得写了。。。
+  
+  其实应该按照下面这样来写！上面写麻烦了，string可以直接判断
 */
+class Solution {
+public:
+    bool isAnagram(string s, string t) { 
+        sort(s.begin(), s.end());
+        sort(t.begin(), t.end());
+        return s == t; 
+    }
+};
