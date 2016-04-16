@@ -1,0 +1,18 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+void deleteNode(struct ListNode* node) {
+    node->val=node->next->val;
+    node->next=node->next->next;
+}
+
+/*
+  从一个单链表中删除一个指定的节点。
+  开始没想到，想着要遍历后面的所有元素，全都前移，因为是单链表。。。
+  （后来一不小心看了discuss）， 把该节点的后一个节点val直接赋过来，然后把后面那个节点删掉，不就可以了。
+  智商真是不够用。
+*/
