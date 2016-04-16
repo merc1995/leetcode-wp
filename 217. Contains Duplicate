@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        return set<int>(nums.begin(),nums.end()).size() < nums.size();
+    }
+};
+/*
+  越来越感觉自己写的代码就是一坨。。。。垃圾
+  
+  看看别人家的孩子，就一行代码。利用set没有重复的特性，直接判断两个长度。
+  真心感觉自己stl源码白读了。
+  
+  今天就到这吧 泪目
+*/
