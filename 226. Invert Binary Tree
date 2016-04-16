@@ -1,0 +1,23 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+struct TreeNode* invertTree(struct TreeNode* root) {
+    if(root==NULL) return root;
+    struct TreeNode* r=invertTree(root->left);
+    struct TreeNode* l=invertTree(root->right);
+    root->left=l;
+    root->right=r;
+    return root;
+}
+
+/*
+  翻转二叉树，左子树变右子树，右子树变左子树。
+  递归，先翻转左子树，返回节点记为右子树
+  翻转右子树，返回节点记为左子树
+  返回。
+*/
