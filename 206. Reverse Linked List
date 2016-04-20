@@ -19,4 +19,20 @@ struct ListNode* reverseList(struct ListNode* head) {
 /*
 	单向列表逆向，  
 	迭代方法实现，记录下上一个元素，然后更新，使指针反向。
+	
+	递归的方法：reverse函数作用是返回反向后的首元素，这样把head->next往后的元素逆向之后，把head加到最后即可。
 */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* reverseList(struct ListNode* head) {
+    if(head==NULL||head->next==NULL) return head;
+    struct ListNode* newhead=reverseList(head->next);
+    head->next->next=head;
+    head->next=NULL;
+    return newhead;
+}
