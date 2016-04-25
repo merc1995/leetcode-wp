@@ -1,0 +1,25 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q) {
+    struct TreeNode* tmp=root;
+    while(tmp){
+        if(p->val>tmp->val&&q->val>tmp->val)
+            tmp=tmp->right;
+        else if(p->val<tmp->val&&q->val<tmp->val)
+            tmp=tmp->left;
+        else return tmp;
+    }
+    return NULL;
+}
+/*
+LCA problem ,, but this is a binary sort tree ,so we can use the feature of it. if the two node you want to search is both less than root
+then you need to search the root->left, both more than,the root->right ...and the other situation ,the root is just the LCA.
+we can use recursion or iteration.
+the upper is iteration,.
+*/
