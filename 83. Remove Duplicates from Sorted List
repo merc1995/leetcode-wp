@@ -1,0 +1,27 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* deleteDuplicates(struct ListNode* head) {
+    if(head==NULL) return head;
+    struct ListNode* nhead=head;
+    struct ListNode* ne=head->next;
+    while(ne!=NULL){
+        if(ne->val!=nhead->val) 
+        {nhead->next=ne;
+        nhead=nhead->next;}
+        ne=ne->next;
+    }
+    nhead->next=NULL;
+    return head;
+}
+
+/*
+  delete all duplicates so that every number appear only once.
+  so we can traversal the link and if the val is not equal to the former one ,then update the link,get it.
+  do not forget to judge weather the link is null;
+  and the last NULL;
+*/
