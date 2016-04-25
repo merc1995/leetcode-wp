@@ -1,0 +1,23 @@
+int cal(int x){
+    int sum=0;
+    while(x){
+        sum+=(x%10)*(x%10);
+        x/=10;
+    }
+    return sum;
+}
+bool isHappy(int n) {
+    int fast=n,slow=n;
+    do{
+        slow=cal(slow);
+        fast=cal(fast);
+        fast=cal(fast);
+    }while(slow!=fast);
+    return slow==1;
+}
+/*
+  that fast and slow is toooo excellent,ok ,i can't imagine this solution . 
+  maybe we can use hashtable.
+  
+  if there is a circle,then the fast and the slow must can be the same.(if the last is '1',it's also a circle)
+*/
