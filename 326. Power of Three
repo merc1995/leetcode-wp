@@ -1,0 +1,23 @@
+bool isPowerOfThree(int n) {
+    if(n==0) return false;
+    while(n%3==0) n/=3;
+    return n==1;
+}
+
+/*
+  this is the loop,,so i can't imagine the soltion without loop or recursive
+  
+  
+  and i look at the discuss ,then i find the solution
+  only one line....excellent!
+*/
+// 3^19=1162261467 ...
+return n > 0 && (1162261467 % n == 0);
+
+/*
+  and i find a more excellent way...2333
+  it take an advantage of radix , convert it to 3 radix,the the start of it must be 10....
+*/
+public boolean isPowerOfThree(int n) {
+    return Integer.toString(n, 3).matches("10*");
+}
