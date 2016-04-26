@@ -1,0 +1,24 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+ int cal(struct TreeNode* root){
+     if(!root) return 0;
+     int l=cal(root->left),r=cal(root->right);
+     return l>r? l+1:r+1;
+ }
+bool isBalanced(struct TreeNode* root) {
+    if(!root) return true;
+    int l=cal(root->left),r=cal(root->right);
+    if(l-r>=-1&&l-r<=1) return isBalanced(root->left)&&isBalanced(root->right);
+    else return false;
+}
+
+/*
+  judge wearher a tree is a balanced tree, the difference between left tree and right tree's  depth should less than 1 for every subtree.
+  so we can use recursion.add another function to calculate the depth of the tree.
+*/
