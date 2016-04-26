@@ -1,0 +1,52 @@
+/**
+first,we use the cheat solution ,ahhhh ,just swap the value of every two adjancent node,,so we get it as follow....
+ */
+struct ListNode* swapPairs(struct ListNode* head) {
+    struct ListNode* st=head;
+    while(st){
+        struct ListNode* ne=st->next;
+        if(ne==NULL) break;
+        int tmp=st->val;
+        st->val=ne->val;
+        ne->val=tmp;
+        st=ne->next;
+    }
+    return head;
+}
+
+/*
+  but as a honest guy,i learn another two ways,first of all,recursion.it's easy to understand,but use O(n) stack space
+*/
+struct ListNode* swapPairs(struct ListNode* head) {
+    if(!head||!head->next) return head;
+    struct ListNode* st=head->next;
+    head->next=swapPairs(st->next);
+    st->next=head;
+    return st;
+}
+
+/*
+  and the second way is using dummy;
+ ListNode *dummy = new ListNode(0)
+ */
+ C++
+ 
+class Solution {
+public:
+    ListNode *swapPairs(ListNode *head) {
+    ListNode *dummy = new ListNode(0), *node;
+    node = dummy;
+    dummy->next = head;
+    while (head && head->next) {
+        ListNode *nxt = head->next;
+        head->next = nxt->next;
+        nxt->next = head;
+        node->next = nxt;
+        node = head;
+        head = node->next;
+    }
+    return dummy->next;
+}
+};
+ 
+ 
