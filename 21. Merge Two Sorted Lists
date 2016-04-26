@@ -41,4 +41,9 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
 /*
   merge two sorted link ,,,
   I just use the link with smaller first value,make it the new link's first one.then merge the two link. 
+  there is a more simple solution to do it ,just use the dummy node ,and you don't strive to hold the new link's head,just return 
+  dummy.next;It's very convenient. just like this:
+  
+    ListNode dummy(0);
+    
 */
