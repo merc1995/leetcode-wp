@@ -1,0 +1,14 @@
+int maxProfit(int* prices, int pricesSize) {
+    int ans=0,pre=prices[0];
+    for(int i=1;i<pricesSize;i++){
+        if(prices[i]>pre){
+            ans=ans>(prices[i]-pre)?ans:(prices[i]-pre);
+        }
+        else pre=prices[i];
+    }
+    return ans;
+}
+/*
+  just traversal the array only once,if the price is bigger than the pre smaller,then calculate the max ,else update the pre smaller,,then
+  we can get the ans;
+*/
