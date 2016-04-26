@@ -1,0 +1,44 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
+    if(l1&&l2){
+        struct ListNode* head=l1;
+        if(l1->val<l2->val){
+            head=l1;
+            l1=l1->next;
+        }
+        else {
+            head=l2;
+            l2=l2->next;
+        }
+        head->next=NULL;
+            struct ListNode* hh=head;
+            while(l2&&l1){
+                if(l2->val>l1->val){
+                    head->next=l1;
+                    l1=l1->next;
+                }
+                else{
+                    head->next=l2;
+                    l2=l2->next;
+                }
+                head=head->next;
+            }
+            if(l1) head->next=l1;
+            else head->next=l2;
+            
+            return hh;
+    }
+    return l1? l1:l2;
+}
+
+
+/*
+  merge two sorted link ,,,
+  I just use the link with smaller first value,make it the new link's first one.then merge the two link. 
+*/
