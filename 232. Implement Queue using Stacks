@@ -1,0 +1,46 @@
+class Queue {
+public:
+    // Push element x to the back of queue.
+    stack<int>p,q;
+    void push(int x) {
+        p.push(x);
+    }
+
+    // Removes the element from in front of queue.
+    void pop(void) {
+        peek();
+        q.pop();
+    }
+
+    // Get the front element.
+    int peek(void) {
+        if(q.empty()){
+            while(!p.empty()){
+                q.push(p.top());
+                p.pop();
+            }
+        }
+        return q.top();
+    }
+
+    // Return whether the queue is empty.
+    bool empty(void) {
+        return p.empty()&&q.empty();
+    }
+};
+
+
+/*
+use two stack to implement a queue
+use one of the stack store the value that was pushed into the queue/
+if you want the queue's front .just take the value from the first stack and push them into the second one ,then you just get the 
+reverse sequence,and the first one is just the queue's front....if the second one is not a empty.it means the previous value is still
+in the queue,so use the first one still store them.when the second one is empty,then move them from first one to second one;
+
+for example ,,,push (1,2,3) then first one:  3  2  1  second : empty
+              pop()       second one is empty ,so after the operation ,.first empty  second : 1  2  3->> 2 3 
+              push (4  5 )     F:  5 4   S:2  3
+              pop()    F:5 4    S:3
+              
+  amazing ,,isn't it ?
+*/
