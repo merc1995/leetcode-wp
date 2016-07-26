@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int getSum(int a, int b) {
+        int sum=a;
+        while(b){
+            sum=a^b;
+            b=(a&b)<<1;
+            a=sum;
+        }
+        return sum;
+    }
+};
+
+
+question is that do not use + and - to calculate the sum of two integers,sounds interesting....
+the first I think of is the binary and it's really the way to solve it.
+but I don't come up with a good solution ,,,,,then I saw the discussion...:)
+wow,talented!
+he uses recursion ...let's see the binary of two integers such as 5 and 7
+  1 0 1
+  1 1 1
+the ans of  5^7 is (0 1 0)=2 and we can see that it needs to add the first and the third '1' and left move 1,
+in other words it's need the (a&b)<<1  why?
+because it needs to carry and the two same '1' can cause carry . so we need to left shift.
+then the question become the sum of b=(a&b)<<1 and a=sum
+when b become 0 then the ans is sum...
