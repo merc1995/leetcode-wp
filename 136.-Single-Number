@@ -1,0 +1,18 @@
+/*
+Given an array of integers, every element appears twice except for one. Find that single one.
+*/
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans=0;
+        for(int i = 0 ; i < nums.size() ; i++){
+            ans^=nums[i];
+        }
+        return ans;
+    }
+};
+
+/*
+  so this time we directly take an advantage of XOR , the number XOR itself will get zero...so we XOR every number in it then we 
+  get the ans.
+*/
