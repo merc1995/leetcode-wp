@@ -1,0 +1,37 @@
+/*
+Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice.
+Find the two elements that appear only once.
+*/
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        int diff = 0;
+        vector<int>ans(2);
+        ans[0] = 0;
+        ans[1] = 0;
+        for(int i = 0 ; i < nums.size() ; i++){
+            diff ^= nums[i];
+        }
+        diff = diff & (-diff);
+        //cout << diff <<endl;
+        for(int i = 0 ; i < nums.size() ; i++){
+            if((nums[i] & diff) == diff){
+                ans[0] ^= nums[i];
+            }
+            else{
+                ans[1] ^= nums[i];
+            }
+        }
+        return ans;
+    }
+};
+
+
+/*
+  the solution is so ,e ,first we can get the XOR of the element in the vector,then assume the ans is x and y,x^y =XOR
+  next question is how can we separate them ?
+  here is a very nice solution ,from  XOR^(XOR) we can get the left most digest that the x and y is different.
+  then loop through the vector ,if the element & diff is diff then it should xor x(or y)
+  so we find a way to tell apart the element belong to the collection x or the collection y..
+  interseting.
+*/
