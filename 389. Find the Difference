@@ -1,0 +1,26 @@
+at first I think you can sort it and traverse the two array...a little flexible..
+then another thought,use an extra array to count the time of every lowercase letters,for s ++ and t --and once a letter become -1 ,
+then it was the ans.
+
+
+and the more convenient way is XOR....you know add s and t and every letter appear twice except the letter extra, then it's the ans.
+
+
+my code
+
+char findTheDifference(char* s, char* t) {
+    int cnt[30];
+    memset(cnt,0,sizeof(cnt));
+    for (int i = 0; i < strlen(s); i++) {
+        cnt[s[i] - 'a']++;
+    }
+    char ans;
+    for (int i = 0; i < strlen(t); i++) {
+        cnt[t[i] - 'a']--;
+        if (cnt[t[i] - 'a'] < 0) {
+            ans = t[i];
+            break;
+        }
+    }
+    return ans;
+}
